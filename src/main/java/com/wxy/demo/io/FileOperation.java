@@ -22,5 +22,11 @@ public class FileOperation {
         if (file1.exists()) {
             System.out.println(file1.getName());
         }
+        // 获取父目录
+        File file2 = new File("/home/wxy/.ssh");
+        if (file2.exists()) {
+            File parentFile = file2.getParentFile();
+            System.out.println(parentFile.getPath());
+        }
     }
 }
