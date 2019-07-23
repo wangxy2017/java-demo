@@ -1,7 +1,6 @@
 package com.wxy.demo.io;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 
 /**
@@ -14,5 +13,13 @@ public class FileOperation1 {
         File file = new File("aaa");
         file.createNewFile();
         System.out.println(file.exists());
+
+        File file1 = new File("test/one/two");
+        if (!file1.exists()) {
+            file1.mkdir();
+        }
+        if (!file1.exists()) {
+            file1.mkdirs();
+        }
     }
 }
