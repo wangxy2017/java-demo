@@ -10,10 +10,16 @@ import java.io.IOException;
  **/
 public class FileOperation1 {
     public static void main(String[] args) throws IOException {
+        // 创建文件
         File file = new File("aaa");
-        file.createNewFile();
-        System.out.println(file.exists());
-
+        if (!file.exists()) {
+            file.createNewFile();
+        }
+        // 判断文件
+        System.out.println(file.isFile());
+        // 判断文件夹
+        System.out.println(file.isDirectory());
+        // 创建文件夹
         File file1 = new File("test/one/two");
         if (!file1.exists()) {
             file1.mkdir();
