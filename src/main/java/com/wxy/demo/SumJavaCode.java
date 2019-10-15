@@ -1,6 +1,7 @@
 package com.wxy.demo;
 
 import java.io.*;
+import java.util.Objects;
 
 /**
  * 　*
@@ -9,15 +10,15 @@ import java.io.*;
  */
 public class SumJavaCode {
 
-    static long normalLines = 0; // 代码行
-    static long commentLines = 0; // 注释行
-    static long whiteLines = 0; // 空行
+    private static long normalLines = 0; // 代码行
+    private static long commentLines = 0; // 注释行
+    private static long whiteLines = 0; // 空行
 
     public static void main(String[] args) {
         String[] resources = {"/home/wxy/IdeaProjects/panda-platform"};// 检索目录
         SumJavaCode sjc = new SumJavaCode();
-        for (int i = 0; i < resources.length; i++) {
-            File f = new File(resources[i]);
+        for (String resource : resources) {
+            File f = new File(resource);
             System.out.println("目录：" + f.getName());
             sjc.treeFile(f);
             System.out.println("代码行：" + normalLines);
@@ -37,14 +38,14 @@ public class SumJavaCode {
      */
     private void treeFile(File f) {
         File[] childs = f.listFiles();
-        for (int i = 0; i < childs.length; i++) {
-            if (!childs[i].isDirectory()) {
-                if (childs[i].getName().matches(".*\\.java$")) {
+        for (File child : Objects.requireNonNull(childs)) {
+            if (!child.isDirectory()) {
+                if (child.getName().matches(".*\\.java$")) {
                     //System.out.println(childs[i].getName());
-                    sumCode(childs[i]);
+                    sumCode(child);
                 }
             } else {
-                treeFile(childs[i]);
+                treeFile(child);
             }
         }
     }
@@ -69,7 +70,7 @@ public class SumJavaCode {
                     } else if (line.startsWith("/*") && !line.endsWith("*/")) {
                         commentLines++;
                         comment = true;
-                    } else if (true == comment) {
+                    } else if (comment) {
                         commentLines++;
                         if (line.endsWith("*/")) {
                             comment = false;
