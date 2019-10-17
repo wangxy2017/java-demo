@@ -1,13 +1,15 @@
 package com.wxy.demo;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.*;
-import java.util.Objects;
 
 /**
- * 　*
- * 　* @author LYZ
- * 　*
- */
+ * @Author wxy
+ * @Date 19-10-16 下午5:16
+ * @Description TODO 代码统计
+ **/
+@Slf4j
 public class SumJavaCode {
 
     private static long normalLines = 0; // 代码行
@@ -15,12 +17,15 @@ public class SumJavaCode {
     private static long whiteLines = 0; // 空行
 
     public static void main(String[] args) {
+        final String projectName = "盼达智能车联网系统V1.1.2";
+        final String projectPath = "/home/wxy/IdeaProjects/panda-platform";
         SumJavaCode sjc = new SumJavaCode();
-        File f = new File("/home/wxy/IdeaProjects/panda-platform");
-        System.out.println("软件名称：盼达智能车联网系统V1.1.2");
+        File f = new File(projectPath);
         sjc.treeFile(f);
-        System.out.println("代码行(不含注释)：" + normalLines);
-        System.out.println("代码行(含注释)：" + (normalLines + commentLines));
+        log.info("项目名称：{}", projectName);
+        log.info("代码行：{}", normalLines);
+        log.info("注释行：{}", commentLines);
+        log.info("空白行：{}", whiteLines);
     }
 
     /**
@@ -30,10 +35,9 @@ public class SumJavaCode {
      */
     private void treeFile(File f) {
         File[] childs = f.listFiles();
-        for (File child : Objects.requireNonNull(childs)) {
+        for (File child : childs) {
             if (!child.isDirectory()) {
                 if (child.getName().matches(".*\\.java$")) {
-                    //System.out.println(childs[i].getName());
                     sumCode(child);
                 }
             } else {
@@ -57,7 +61,7 @@ public class SumJavaCode {
             try {
                 while ((line = br.readLine()) != null) {
                     line = line.trim();
-                    if (line.matches(" ^[\\s&&[^\\n]]*$")) {
+                    if (line.matches("^[\\s&&[^\\n]]*$")) {
                         whiteLines++;// 空白行
                     } else if (line.startsWith("/*") && !line.endsWith("*/")) {
                         commentLines++;
