@@ -15,20 +15,12 @@ public class SumJavaCode {
     private static long whiteLines = 0; // 空行
 
     public static void main(String[] args) {
-        String[] resources = {"/home/wxy/IdeaProjects/panda-platform"};// 检索目录
         SumJavaCode sjc = new SumJavaCode();
-        for (String resource : resources) {
-            File f = new File(resource);
-            System.out.println("目录：" + f.getName());
-            sjc.treeFile(f);
-            System.out.println("代码行：" + normalLines);
-            System.out.println("注释行：" + commentLines);
-            System.out.println("空行：" + whiteLines);
-            // 重置
-            normalLines = 0;
-            commentLines = 0;
-            whiteLines = 0;
-        }
+        File f = new File("/home/wxy/IdeaProjects/panda-platform");
+        System.out.println("软件名称：盼达智能车联网系统V1.1.2");
+        sjc.treeFile(f);
+        System.out.println("代码行(不含注释)：" + normalLines);
+        System.out.println("代码行(含注释)：" + (normalLines + commentLines));
     }
 
     /**
