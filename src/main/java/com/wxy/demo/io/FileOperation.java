@@ -10,10 +10,6 @@ import java.io.IOException;
  **/
 public class FileOperation {
     public static void main(String[] args) throws IOException {
-        updateFile();
-    }
-
-    public static void test1() {
         // 获取子目录
         File file = new File("/home/wxy");
         if (file.isDirectory()) {
@@ -33,17 +29,10 @@ public class FileOperation {
             File parentFile = file2.getParentFile();
             System.out.println(parentFile.getPath());
         }
-    }
-
-    /**
-     * 修改文件名
-     *
-     * @throws IOException
-     */
-    public static void updateFile() throws IOException {
-        File file = new File("a.txt");
-        file.createNewFile();
-        File file1 = new File("b.txt");
-        file.renameTo(file1);
+        // 修改文件名
+        File file3 = new File("a.txt");
+        file3.createNewFile();
+        File file4 = new File("b.txt");
+        file3.renameTo(file4);
     }
 }
