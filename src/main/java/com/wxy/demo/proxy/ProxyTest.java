@@ -8,8 +8,8 @@ package com.wxy.demo.proxy;
 public class ProxyTest {
 
     public static void main(String[] args) throws IllegalAccessException, InstantiationException {
-        Proxy proxy = Proxy.class.newInstance();
-        proxy.request();
+//        Proxy proxy = new Proxy();
+//        proxy.request();
     }
 
     // 抽象主题
