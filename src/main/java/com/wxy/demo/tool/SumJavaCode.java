@@ -1,4 +1,4 @@
-package com.wxy.demo;
+package com.wxy.demo.tool;
 
 import lombok.extern.slf4j.Slf4j;
 

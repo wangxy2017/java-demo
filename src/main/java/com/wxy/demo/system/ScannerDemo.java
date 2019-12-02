@@ -1,4 +1,4 @@
-package com.wxy.demo;
+package com.wxy.demo.system;
 
 import java.util.Scanner;
 

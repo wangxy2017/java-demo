@@ -1,4 +1,4 @@
-package com.wxy.demo;
+package com.wxy.demo.tool;
 
 import javax.swing.text.html.HTMLEditorKit.ParserCallback;
 import javax.swing.text.html.parser.ParserDelegator;
