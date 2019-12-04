@@ -11,7 +11,7 @@ import java.util.UUID;
  * @Description TODO 创建指定大小文件
  **/
 public class CreateFile {
-    public static void crate(long length) throws IOException {
+    public static void create(long length) throws IOException {
         RandomAccessFile r = null;
         try {
             String filename = UUID.randomUUID().toString().replaceAll("-", "");
